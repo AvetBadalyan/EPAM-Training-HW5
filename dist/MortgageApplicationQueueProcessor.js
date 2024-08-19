@@ -1,17 +1,13 @@
-const WrongDataException = require('./exceptions/WrongDataException');
-
+import WrongDataException from "./exceptions/WrongDataException";
 class MortgageApplicationQueueProcessor {
     constructor(customerRepository) {
         this.customerRepository = customerRepository;
     }
-
-    static MESSAGE_INVALID_CUSTOMER = 'Customer not found!';
-
-    checkWrongData(customer){
-        if (!customer)
+    checkWrongData(customer) {
+        if (!customer) {
             throw new WrongDataException(MortgageApplicationQueueProcessor.MESSAGE_INVALID_CUSTOMER);
+        }
     }
-
     processRequest(customerId, amountRequested) {
         this.updateBalance(customerId, amountRequested);
     }
@@ -21,9 +17,11 @@ class MortgageApplicationQueueProcessor {
     }
     getCustomer(customerId) {
         const customer = this.customerRepository.get(customerId);
-        this.checkWrongData(customer);
+        if (!customer) {
+            throw new WrongDataException(MortgageApplicationQueueProcessor.MESSAGE_INVALID_CUSTOMER);
+        }
         return customer;
     }
 }
-
-module.exports = MortgageApplicationQueueProcessor;
+MortgageApplicationQueueProcessor.MESSAGE_INVALID_CUSTOMER = "Customer not found!";
+export default MortgageApplicationQueueProcessor;

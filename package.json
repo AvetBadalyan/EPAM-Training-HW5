@@ -2,13 +2,18 @@
   "name": "clean-design-tasks-js",
   "version": "1.0.0",
   "description": "JS Clean Design practice",
+  "type": "module",
   "scripts": {
-    "test": "mocha \"./**/*.spec.js\""
+    "test": "mocha './dist/test/MortgageApplicationQueueProcessor.spec.js'"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/mocha": "^10.0.7",
     "mocha": "5.2.0",
-    "mocha-junit-reporter": "^2.0.0"
+    "mocha-junit-reporter": "^2.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
