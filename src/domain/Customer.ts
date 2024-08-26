@@ -1,25 +1,13 @@
 import NotEligibleForMortgageException from "../exceptions/NotEligibleForMortgageException";
 
 export default class Customer {
-  id: number;
-  firstName: string;
-  lastName: string;
-  balance: number;
-  badCreditHistoryCount: number;
-
-  constructor(
-    id: number,
-    firstName: string,
-    lastName: string,
-    balance: number,
-    badCreditHistoryCount: number
-  ) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.balance = balance;
-    this.badCreditHistoryCount = badCreditHistoryCount;
-  }
+    constructor(
+        public id: number,
+        public firstName: string,
+        public lastName: string,
+        public balance: number,
+        public badCreditHistoryCount: number
+    ) {}
 
   updateBalance(amount: number): void {
     if (this.isEligibleForMortgage(amount)) {
