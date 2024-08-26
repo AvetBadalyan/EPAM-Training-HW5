@@ -8,7 +8,8 @@ interface CustomerRepository {
 export default class MortgageApplicationQueueProcessor {
   customerRepository: CustomerRepository;
 
-  static MESSAGE_INVALID_CUSTOMER = "Customer not found!";
+  
+  private static readonly MESSAGE_INVALID_CUSTOMER = "Customer not found!";
 
   constructor(customerRepository: CustomerRepository) {
     this.customerRepository = customerRepository;
